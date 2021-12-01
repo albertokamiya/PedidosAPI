@@ -35,11 +35,10 @@ class MyapiApplicationTests {
 
 	@Test
 	void testAddClient() throws JsonProcessingException, Exception {
-		Client client = new Client(0, "Name", "address", "phone");
 		
 		MvcResult res = mock.perform(post("/api/client")
 				.contentType("application/json")
-				.content(object.writeValueAsString(client)))
+				.content(object.writeValueAsString(null)))
 		.andExpect(status().isOk())
 		.andReturn();
 		

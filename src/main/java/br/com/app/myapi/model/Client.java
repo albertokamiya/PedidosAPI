@@ -1,12 +1,18 @@
 package br.com.app.myapi.model;
 
-import java.io.Serializable;
+import java.time.LocalDateTime;
 
-public class Client implements Serializable {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	private static final long serialVersionUID = 1L;
+@Entity
+public class Client {
 	
-	private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
 	private String name;
 	
@@ -14,19 +20,21 @@ public class Client implements Serializable {
 	
 	private String phone;
 
-	public Client(long id, String name, String address, String phone) {
-		super();
-		this.id = id;
+	private LocalDateTime dtCreation = LocalDateTime.now();
+	
+	public Client() {}
+	
+	public Client(String name, String address, String phone) {
 		this.name = name;
 		this.address = address;
 		this.phone = phone;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -53,7 +61,14 @@ public class Client implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
+
+	public LocalDateTime getDtCreation() {
+		return dtCreation;
+	}
+
+	public void setDtCreation(LocalDateTime dtCreation) {
+		this.dtCreation = dtCreation;
+	}
 	
 
 }

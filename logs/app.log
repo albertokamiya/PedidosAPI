@@ -1,0 +1,4 @@
+2021-12-01 11:14:09,554 INFO br.com.app.myapi.MyapiApplication [restartedMain] Starting MyapiApplication using Java 11.0.10 on DESKTOP-QJIE4CU with PID 11640 (C:\Users\Alberto\eclipse-workspace\Pedidos-api\target\classes started by Alberto in C:\Users\Alberto\eclipse-workspace\Pedidos-api)
+2021-12-01 11:14:09,557 DEBUG br.com.app.myapi.MyapiApplication [restartedMain] Running with Spring Boot v2.4.2, Spring v5.3.3
+2021-12-01 11:14:09,557 INFO br.com.app.myapi.MyapiApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-12-01 11:14:16,462 INFO br.com.app.myapi.MyapiApplication [restartedMain] Started MyapiApplication in 7.46 seconds (JVM running for 12.486)
