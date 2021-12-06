@@ -1,38 +1,42 @@
 package br.com.app.myapi.model;
 
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class Product implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
-	private long id;
+@Entity
+public class Product {
 	
-	private String nome;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	private String name;
 	
 	private double price;
+	
+	public Product() {}
 
-	public Product(long id, String nome, double price) {
-		super();
-		this.id = id;
-		this.nome = nome;
+	public Product(String name, double price) {
+		this.name = name;
 		this.price = price;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public double getPrice() {
