@@ -35,16 +35,21 @@ public class ClientController {
 	@Autowired
 	ClientRepository clientRepository;
 
-	@GetMapping("/hello")
-	public void hello() {
-		System.out.println("hello");
-	}
-
 	@GetMapping
 	public Page<ClientDto> listClient(
-			@PageableDefault(sort = "dtCreation", direction = Direction.DESC, page = 0, size = 10) Pageable pageable) {
+			@PageableDefault(sort = "name", direction = Direction.DESC, page = 0, size = 10) Pageable pageable) {
 		Page<Client> clients = clientRepository.findAll(pageable);
-		return ClientDto.converter(clients);
+		return ClientDto.convert(clients);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<ClientDto> getClient(@PathVariable Long id) {
+		Optional<Client> client = clientRepository.findById(id);
+		if (client.isPresent()) {
+			ClientDto clientDto = new ClientDto(client.get());
+			return ResponseEntity.ok(clientDto);
+		}
+		return ResponseEntity.notFound().build();
 	}
 
 	@PostMapping

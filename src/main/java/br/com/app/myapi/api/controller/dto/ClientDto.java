@@ -53,7 +53,7 @@ public class ClientDto {
 		this.phone = phone;
 	}
 
-	public static Page<ClientDto> converter(Page<Client> clients) {
+	public static Page<ClientDto> convert(Page<Client> clients) {
 		return clients.map(ClientDto::new);
 	}
 
