@@ -1,51 +1,50 @@
 package br.com.app.myapi.model;
 
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-public class OrderItem implements Serializable {
+@Entity
+@Table(name = "tb_item")
+public class OrderItem {
 
-	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	private long idPedido;
-	
-	private long idProduto;
-	
-	private String nomeProduto;
+	@ManyToOne
+	@JoinColumn(name = "order_id")
+	private Order order;
+
+	@ManyToOne
+	@JoinColumn(name = "product_id")
+	private Product product;
 	
 	private int quantidade;
-	
+
 	private double price;
 
-	public OrderItem(long idPedido, long idProduto, int quantidade, double price) {
-		super();
-		this.idPedido = idPedido;
-		this.idProduto = idProduto;
-		this.quantidade = quantidade;
-		this.price = price;
+	public OrderItem() {
 	}
 
-	public String getNomeProduto() {
-		return nomeProduto;
+	public Long getId() {
+		return id;
 	}
 
-	public void setNomeProduto(String nomeProduto) {
-		this.nomeProduto = nomeProduto;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public long getIdPedido() {
-		return idPedido;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setIdPedido(long idPedido) {
-		this.idPedido = idPedido;
-	}
-
-	public long getIdProduto() {
-		return idProduto;
-	}
-
-	public void setIdProduto(long idProduto) {
-		this.idProduto = idProduto;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 	public int getQuantidade() {
@@ -63,6 +62,13 @@ public class OrderItem implements Serializable {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
-	
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 }

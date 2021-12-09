@@ -6,24 +6,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_client")
 public class Client {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
-	
+
 	private String address;
-	
+
 	private String phone;
 
 	private LocalDateTime dtCreation = LocalDateTime.now();
-	
-	public Client() {}
-	
+
+	public Client() {
+	}
+
 	public Client(String name, String address, String phone) {
 		this.name = name;
 		this.address = address;
@@ -69,6 +72,5 @@ public class Client {
 	public void setDtCreation(LocalDateTime dtCreation) {
 		this.dtCreation = dtCreation;
 	}
-	
 
 }
